@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDAO">
+
+	<select id="getBoardList" resultType="board">
+
+		select * from member order by b_no desc
+
+	</select>
+	
+	<insert id="insertBoard" parameterType="board">
+		insert into member values(b_no.nextval, #{title},#{content},#{writer})
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="board">
+		delete member where b_no=#{b_no}
+	</delete>
+
+	<select id="getBoard" resultType="board">
+		select * from member where b_no=#{b_no}
+	</select>
+	
+	<update id="updateBoard" parameterType="board">
+		update member set title = #{title}, content = #{content} WHERE b_no=#{b_no}
+	</update>
+</mapper>
